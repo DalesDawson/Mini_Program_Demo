@@ -1,0 +1,20 @@
+<!--pages/first/first.wxml-->
+<!-- 引入自定义的模板头部 -->
+<include src="../templates/header" /> 
+<button type="default" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="default" hover-class="other-button-hover"> default </button>
+<button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary"> primary </button>
+<button type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="warn"> warn </button>
+
+
+<button type="primary" bindtap='btnClick'>{{btnText}}</button>
+
+
+<view wx:if="{{show}}">{{text}} 1</view>
+<view wx:else>{{text}} 2</view>
+
+<view wx:for="{{news}}" wx:for-item="itemx" wx:for-index="ix">
+  {{ix}}-{{itemx}}
+</view>
+<!--引入自定义模板底部 -->
+<import src="../templates/footer" />
+<template is="footer2" />
