@@ -5,12 +5,13 @@
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text>关闭退出，再次打开即可进入</text>
     </block>
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
   <view>{{ msg }}</view>
-  <!-- <button bindtap='call'>打电话</button>
-  <button bindtap="clickMe">扫一扫</button> -->
+   <!-- <button bindtap='call'>打电话</button>
+  <button bindtap="clickMe">扫一扫</button>  -->
 </view>

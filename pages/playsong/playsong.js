@@ -23,7 +23,7 @@ Page({
 		
 		that.setData({
 			playingSong: songdata,
-			songUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songdata.songmid + '.m4a?fromtag=38',
+      songUrl: 'http://ws.stream.qqmusic.qq.com/C100' + songdata.songmid + '.m4a?fromtag=38&guid=422564193',
 			songImg: 'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + songdata.albummid + '.jpg',
 		});
 

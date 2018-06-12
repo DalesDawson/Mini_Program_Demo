@@ -10,6 +10,9 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // wx.navigateTo({    //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）
+        //   url: 'pages/a/a'
+        // })
       }
     })
     // 获取用户信息
@@ -32,17 +35,77 @@ App({
         }
       }
     })
-  },
+  }
+  // onLaunch: function () {
+  //   console.log('App Launch')
+  // },
+  // onShow: function () {
+  //   console.log('App Show')
+  // },
+  // onHide: function () {
+  //   console.log('App Hide')
+  // },
+  // globalData: {
+  //   hasLogin: false,
+  //   openid: null
+  // },
+  // // lazy loading openid
+  // getUserOpenId: function (callback) {
+  //   var self = this
+
+  //   if (self.globalData.openid) {
+  //     callback(null, self.globalData.openid)
+  //   } else {
+  //     wx.login({
+  //       success: function (data) {
+  //         wx.request({
+  //           url: openIdUrl,
+  //           data: {
+  //             code: data.code
+  //           },
+  //           success: function (res) {
+  //             console.log('拉取openid成功', res)
+  //             self.globalData.openid = res.data.openid
+  //             callback(null, self.globalData.openid)
+  //             wx.navigateTo({    //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）
+  //               url: "pages/a/a"
+  //             })
+
+  //           },
+  //           fail: function (res) {
+  //             console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res)
+  //             callback(res)
+  //           }
+  //         })
+  //       },
+  //       fail: function (err) {
+  //         console.log('wx.login 接口调用失败，将无法正常使用开放接口等服务', err)
+  //         callback(err)
+  //       }
+  //     })
+  //   }
+  // }
+  ,
   globalData: {
     userInfo: null,
     doubanBase: "https://api.douban.com",
     heWeatherBase: "https://free-api.heweather.com",
     juhetoutiaoBase: "https://v.juhe.cn/toutiao/index",
+    juheWeatherBase: "https://v.juhe.cn/weather/index",
+    tenceAddressBase: "https://apis.map.qq.com/ws/geocoder/v1/?",
     tencentMapKey: "4HYBZ-EB23D-SLC42-HQ5R3-LP3LQ-OZFU5",
     heWeatherKey: "008d3f89c19f4352bf806881ceee1f6c",
     juhetoutiaoKey: "18e10ebfaf4c1f82a7878220fa34dfd7",
+    juheWeatherKey: "3dc3a81c4d7965f15051a08084c2f0a1",
+    tenceAddressKey: "ISUBZ-Y2HH6-UJUSJ-MZOS4-FJWF6-YTB3F",
     userInfo: null,
     topListId: '',
-    songData: null
+    songData: null,
+
+    //首页精选
+    mvlistUrl: "https://baobab.kaiyanapp.com/api/v2/feed?",
+
+    //相关视频
+    mvinfoUrl: "https://baobab.kaiyanapp.com/api/v4/video/related?"
   }
 })

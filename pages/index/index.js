@@ -12,15 +12,16 @@ Page({
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../log/log'
     })
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
       })
+
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -37,7 +38,11 @@ Page({
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true
+            hasUserInfo: true,
+          
+          })
+          wx.navigateTo({    //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）
+            url: "/pages/a/a"
           })
         }
       })

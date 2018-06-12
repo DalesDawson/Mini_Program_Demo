@@ -38,9 +38,7 @@ Page({
 	},
 	playsongTap: function(e){
     app.globalData.songData = e.currentTarget.dataset.data
-		// app.setGlobalData({
-		//   songData: e.currentTarget.dataset.data
-		// });
+    console.log(e.currentTarget.dataset.data)
 		wx.navigateTo({
 		  url: '../playsong/playsong'
 		});

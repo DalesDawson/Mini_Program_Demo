@@ -13,6 +13,7 @@ Page({
     topList: [],
     radioList: [],
     hotkey: [],
+    songList:[],
     special: '',
     searchKeyword: '',
     searchSongList: [],
@@ -29,20 +30,21 @@ Page({
   //   })
   // },
   onLoad: function () {
-    wx.scanCode({
-      success: function (e) {
-        console.log(e)
-      }
-    })
-    console.log('index onLoad');
+    // wx.scanCode({
+    //   success: function (e) {
+    //     console.log(e)
+    //   }
+    // })
+    // console.log('index onLoad');
     var that = this;
     //推荐频道
     util.getRecommend(function (data) {
       that.setData({
         slider: data.data.slider,
         radioList: data.data.radioList,
-        songList: data.data.songList
+        songList: data.data.songList      
       })
+      console.log(data.data)
     });
 
     //搜索频道
@@ -58,6 +60,7 @@ Page({
       that.setData({
         topList: data.data.topList
       })
+      console.log(data.data.topList)
     });
   },
   swiperChange: function (e) {

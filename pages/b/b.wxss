@@ -66,8 +66,8 @@
 }
 .newsSelected{
   border: 1px #2a579a solid;
-  border-radius: 20%;
+  border-radius: 10%;
 }
 .tabText{
-  margin:0 0 0 40rpx;
+  margin:5rpx 30rpx 5rpx 30rpx;
 }

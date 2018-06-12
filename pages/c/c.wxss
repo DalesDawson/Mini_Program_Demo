@@ -70,6 +70,10 @@ page{
   display: flex;
   justify-content: space-between;
 }
+.hotlist{
+  display: block;
+  justify-content: space-around;
+}
 .recommend .channel .list .item{
   background: #fff;
 }
@@ -78,6 +82,18 @@ page{
   vertical-align: top;
   width: 350rpx;
   height: 350rpx;
+}
+.hotimg{
+  position: relative;
+  vertical-align: top;
+  width: 350rpx;
+  height: 350rpx;
+}
+.hottext{
+  display: block;
+  padding: 10rpx 14rpx;
+  font-size: 24rpx;
+  min-height: 64rpx;
 }
 .recommend .channel .list .item .img:after{
   content: '';
@@ -92,7 +108,7 @@ page{
 .recommend .channel .list .item .text{
   display: block;
   padding: 10rpx 14rpx;
-  font-size: 28rpx;
+  font-size: 24rpx;
   min-height: 64rpx;
 }
 

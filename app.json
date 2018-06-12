@@ -1,12 +1,11 @@
 {
   "pages": [
-   
-   
-    "pages/index/index",
-    "pages/logs/logs",
+    "pages/a/a",
     "pages/b/b",
     "pages/c/c",
     "pages/d/d",
+    "pages/index/index",
+    "pages/logs/logs",
     "pages/playsong/playsong",
     "pages/toplist/toplist",
     "pages/first/first",
@@ -26,8 +25,8 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页",
+        "pagePath": "pages/a/a",
+        "text": "天气",
         "iconPath": "pages/images/an.png",
         "selectedIconPath": "pages/images/as.png"
       },

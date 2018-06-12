@@ -1,56 +1,30 @@
-function getRandomColor() {
-  const rgb = []
-  for (let i = 0; i < 3; ++i) {
-    let color = Math.floor(Math.random() * 256).toString(16)
-    color = color.length == 1 ? '0' + color : color
-    rgb.push(color)
-  }
-  return '#' + rgb.join('')
-}
-
+var app = getApp();
 Page({
-  onReady: function (res) {
-    this.videoContext = wx.createVideoContext('myVideo')
-  },
-  inputValue: '',
   data: {
-    src: '',
-    danmuList:
-    [{
-      text: '第 1s 出现的弹幕',
-      color: '#ff0000',
-      time: 1
-    },
-    {
-      text: '第 3s 出现的弹幕',
-      color: '#ff00ff',
-      time: 3
-    }]
+    mvList: [],
+    mvInfo: []
   },
-  bindInputBlur: function (e) {
-    this.inputValue = e.detail.value
-  },
-  bindButtonTap: function () {
+  onLoad: function (options) {
     var that = this
-    wx.chooseVideo({
-      sourceType: ['album', 'camera'],
-      maxDuration: 60,
-      camera: ['front', 'back'],
+    //获取mv列表
+    wx.request({
+      url: app.globalData.mvlistUrl,
+      header: {
+        'Content-Type': 'application/json'
+      },
       success: function (res) {
-        that.setData({
-          src: res.tempFilePath
-        })
+        if (res.statusCode == 200) {
+          that.setData({
+            mvList: res.data.issueList[0].itemList
+          })
+          
+        } else {
+          console.log('获取失败');
+        }
+        console.log(res)
+        console.log(that.data.mvList)
       }
     })
-  },
-  bindSendDanmu: function () {
-    this.videoContext.sendDanmu({
-      text: this.inputValue,
-      color: getRandomColor()
-    })
-  },
-  videoErrorCallback: function (e) {
-    console.log('视频错误信息:')
-    console.log(e.detail.errMsg)
   }
+
 })
