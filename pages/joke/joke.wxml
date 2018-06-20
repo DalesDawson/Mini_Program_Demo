@@ -1,0 +1,22 @@
+<view class='imagetext'>
+  <view class="{{selsectState[0]?'newsSelected':''}}" bindtap='clickWord'>
+    <!-- <image class="icon-image" src="../../images/report.png"/> -->
+    <view class='tabText'>文字</view>
+  </view>
+  <view class="{{selsectState[1]?'newsSelected':''}}" bindtap='clickPic'>
+    <!-- <image class="icon-image" src="../../images/tiyu.png"/> -->
+    <view class='tabText'>图片</view>
+  </view>
+</view>
+
+<!-- 笑话 -->
+<view>
+  <block wx:for="{{jokes}}" wx:key="key">
+    <view class="card">
+      <view class="{{showView?'view_show':'view_hide'}}">
+        <image class='image' src="{{item.pic}}" mode='widthFix'></image>
+      </view>
+      <text class="joke-content">{{item.content}}</text>
+    </view>
+  </block>
+</view>

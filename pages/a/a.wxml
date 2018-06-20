@@ -1,18 +1,20 @@
 <view>
   城市名:
-    <input class ="input" name="cityName" placeholder='输入城市名'  bindinput ="cityInput" style="background-color:#fbf9fe" />
+    <input class ="input" name="cityName" placeholder='请输入城市名'  bindinput ="cityInput" style="background-color:#fbf9fe" />
   <button bindtap='getWeatherInfo'>查询</button>
 </view>
+<view class='card'>
 <view>城市:{{todayWeather.city}}</view>
 <view>日期:{{todayWeather.date_y}}</view>
 <view>天气:{{todayWeather.weather}}</view>
 <view>气温:{{todayWeather.temperature}}</view>
 <view>风力风向:{{todayWeather.wind}}</view>
 <view>穿衣建议:{{todayWeather.dressing_advice}}</view>
+</view>
 <view style="padding-top:30px"></view> 
-未来7天天气预报 
+  未来7天天气预报 
 <block wx:for="{{weatherDetails}}" wx:key='sss'>  
-    <view style="border:1px solid #39a7e2; margin:10px" >         
+    <view class='card'>         
         <view>{{item.date}}{{item.week}}</view>  
         <view>{{item.temperature}}</view>  
         <view>{{item.weather}}</view>  

@@ -4,12 +4,13 @@
     "pages/b/b",
     "pages/c/c",
     "pages/d/d",
+    "pages/joke/joke",
     "pages/index/index",
     "pages/logs/logs",
     "pages/playsong/playsong",
     "pages/toplist/toplist",
-    "pages/first/first",
-    "pages/test/test"
+    "page/test/test",
+    "pages/first/first"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -31,8 +32,8 @@
         "selectedIconPath": "pages/images/as.png"
       },
       {
-        "pagePath": "pages/b/b",
-        "text": "新闻",
+        "pagePath": "pages/joke/joke",
+        "text": "笑话",
         "iconPath": "pages/images/bn.png",
         "selectedIconPath": "pages/images/bs.png"
       },

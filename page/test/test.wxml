@@ -1,2 +1,4 @@
 <!--page/test/test.wxml-->
-<text>page/test/test.wxml</text>
+<!-- wxml -->
+<!-- 指向微信公众平台首页的web-view -->
+<web-view src="https://mp.weixin.qq.com/"></web-view>
