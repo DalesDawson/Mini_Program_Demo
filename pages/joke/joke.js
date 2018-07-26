@@ -7,8 +7,8 @@ Page({
    */
   data: {
     jokes: [],
-    joketemp:[],
-    selsectState: [1, 0,],
+    isFirstRequest: true,
+    selsectState: [1, 0],
     pagenum: 1,
     jokeurl: app.globalData.jisuJokeText,
     showView: false
@@ -17,48 +17,51 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that = this
-    // 访问聚合数据的网络接口-头条新闻
-    wx.request({
-      url: app.globalData.jisuJokeText,
-      data: {
-        pagenum: this.data.pagenum,
-        appkey: app.globalData.jisuJokeKey,
-        sort: 'addtime',
-        pagesize: 10
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.statusCode == 200) {
-          console.log('success')
-          that.setData({
-            jokes: res.data.result.list
-          })
-        } else {
-          console.log('获取失败');
-        }
-      }
-    })
+  onLoad: function(options) {
+    // var that = this
+    // // 访问聚合数据的网络接口-笑话
+    // wx.request({
+    //   url: app.globalData.jisuJokeText,
+    //   data: {
+    //     pagenum: this.data.pagenum,
+    //     appkey: app.globalData.jisuJokeKey,
+    //     sort: 'addtime',
+    //     pagesize: 10
+    //   },
+    //   header: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success: function(res) {
+    //     console.log(res)
+    //     if (res.statusCode == 200) {
+    //       console.log('success')
+    //       that.setData({
+    //         jokes: res.data.result.list
+    //       })
+    //     } else {
+    //       console.log('获取失败');
+    //     }
+    //   }
+    // })
+    this.clickWord();
   },
-  clickWord: function () {
+  clickWord: function() {
     this.setData({
-      pagenum:1,
+      pagenum: 1,
       jokeurl: app.globalData.jisuJokeText,
       selsectState: [1, 0],
+      isFirstRequest: true,
       showView: false
     })
     this.getJoke()
   },
 
-  clickPic: function () {
+  clickPic: function() {
     this.setData({
-        pagenum:1,
+      pagenum: 1,
       jokeurl: app.globalData.jisuJokePic,
       selsectState: [0, 1],
+      isFirstRequest: true,
       showView: true
     })
     this.getJoke()
@@ -78,15 +81,15 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
-
-        if (res.statusCode == 200) {
+        if (res.data.result!=null) {
+          var responseList = [];
           // console.log('success')
+          that.data.isFirstRequest ? responseList = res.data.result.list : responseList =that.data.jokes.concat(res.data.result.list)
           that.setData({
-            joketemp: res.data.result.list
+            jokes: responseList
           })
-          this.jokes.push(joketemp)
         } else {
           console.log('获取失败');
         }
@@ -96,44 +99,45 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.setData({
-      pagenum:this.data.pagenum+1,
+      pagenum: this.data.pagenum + 1,
+      isFirstRequest: false,
     })
     this.getJoke()
   },
@@ -141,7 +145,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

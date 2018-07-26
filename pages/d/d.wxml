@@ -1,6 +1,6 @@
-<import src="../../../common/head.wxml" />
-<import src="../../../common/foot.wxml" />
- <!-- <view class="swiper-container">
+<!-- <import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" /> -->
+<!-- <view class="swiper-container">
    <swiper autoplay="auto" interval="3000" duration="500" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
       <block wx:for="{{mvList}}" wx:key="unique">
       <view wx:if="{{item.type=='banner2'}}" wx:key='ddd'>
@@ -16,7 +16,58 @@
       </block>
     </view>
     </view> -->
-<block wx:for="{{mvList}}" wx:key='aaa'>
+<!--导航-->
+<!--导航-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+
+<view class="weekly" hidden="{{currentTab!==0}}">
+  <block wx:for="{{weekList}}" wx:key='aaa'>
+    <view class='card'>
+      <view class='center'>
+        <text class="hottext">{{item.data.title}}</text>
+      </view>
+      <view class='out-view,center'>
+        <video id="myVideo" src="{{item.data.playUrl}}"></video>
+      </view>
+      <view class='center'>
+        <text class="hottext">{{item.data.description}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="monthly" hidden="{{currentTab!==1}}">
+  <block wx:for="{{monthList}}" wx:key='bbb'>
+    <view class='card'>
+      <view class='center'>
+        <text class="hottext">{{item.data.title}}</text>
+      </view>
+      <view class='out-view,center'>
+        <video id="myVideo" src="{{item.data.playUrl}}"></video>
+      </view>
+      <view class='center'>
+        <text class="hottext">{{item.data.description}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="all" hidden="{{currentTab!==2}}">
+  <block wx:for="{{allList}}" wx:key='ccc'>
+    <view class='card'>
+      <view class='center'>
+        <text class="hottext">{{item.data.title}}</text>
+      </view>
+      <view class='out-view,center'>
+        <video id="myVideo" src="{{item.data.playUrl}}"></video>
+      </view>
+      <view class='center'>
+        <text class="hottext">{{item.data.description}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- <block wx:for="{{mvList}}" wx:key='aaa'>
   <view wx:if="{{item.type=='video'}}" wx:key='bbb'>
     <view>
       <text class="hottext">{{item.data.title}}</text>
@@ -25,4 +76,4 @@
       <video id="myVideo" src="{{item.data.playUrl}}"></video>
     </view>
   </view>
-</block>
+</block> -->
