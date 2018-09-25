@@ -8,9 +8,9 @@
           <text wx:for="{{playingSong.singer}}" wx:key="unique">{{item.name}}</text>
         </view>
       </view> 
-        <view class="last" bindtap="lastSong"></view>
+        <!-- <view class="last" bindtap="lastSong"></view> -->
         <view class="play {{isPlaying ? '' : 'pause'}}" bindtap="songToggle"></view>
-        <view class="next" bindtap="nextSong"></view>
+        <!-- <view class="next" bindtap="nextSong"></view> -->
     </view>
     <view class="song-lyric">
       <image class="img {{isPlaying ? '' : 'pause'}}" src="{{songImg}}"></image>

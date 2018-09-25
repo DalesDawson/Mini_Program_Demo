@@ -1,0 +1,6 @@
+<view>
+  <button id='add' bindtap='add'>增</button>
+  <button id='delete' bindtap='delete'>删</button>
+  <button id='alter' bindtap='alter'>改</button>
+  <button id='search' bindtap='search'>查</button>
+</view>

@@ -1,6 +1,6 @@
 <!--pages/first/first.wxml-->
 <!-- 引入自定义的模板头部 -->
-<include src="../templates/header" /> 
+<!-- <include src="../templates/header" /> 
 <button type="default" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="default" hover-class="other-button-hover"> default </button>
 <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary"> primary </button>
 <button type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="warn"> warn </button>
@@ -16,5 +16,6 @@
   {{ix}}-{{itemx}}
 </view>
 <!--引入自定义模板底部 -->
-<import src="../templates/footer" />
-<template is="footer2" />
+<!-- <import src="../templates/footer" />
+<template is="footer2" /> --> 
+<image src='../images/timg.gif'></image>
