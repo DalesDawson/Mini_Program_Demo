@@ -1,6 +1,24 @@
 <view>
-  <button id='add' bindtap='add'>增</button>
-  <button id='delete' bindtap='delete'>删</button>
-  <button id='alter' bindtap='alter'>改</button>
-  <button id='search' bindtap='search'>查</button>
+  数据库操作
+  <view class="content">
+    <button id='add' bindtap='add'>增</button>
+    <button id='deletee' bindtap='deletee'>删</button>
+    <button id='modify' bindtap='modify'>改</button>
+    <button id='search' bindtap='search'>查</button>
+  </view>
+  <view>
+    存储操作
+    <view class="content">
+      <button id='upload' bindtap='upload'>上传</button>
+      <button id='download' bindtap='download'>下载</button>
+      <button id='deleteFile' bindtap='deleteFile'>删除</button>
+      <button id='getTemp' bindtap='getTemp'>换取临时链接</button>
+    </view>
+  </view>
+  <view>云函数
+    <view class='content'>
+    <button id='cloudAdd' bindtap='cloudAdd'>云函数+</button>
+     <button id='test' bindtap='test'>测试用户信息</button>
+    </view>
+  </view>
 </view>

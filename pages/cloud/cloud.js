@@ -55,7 +55,7 @@ Page({
     //     console.log(res.data)
     //   }
     // })
-
+    //------------------------------------------------------------------------
     //获取多个记录的数据:查询出 todos 集合中 _openid 等于 user-open-id 且 done 等于 false 的记录
     // db.collection('todos').where({
     //   _openid: 'oSNP40Hdg7tsY9qvaUGz2dirysMw',
@@ -66,7 +66,7 @@ Page({
     //       console.log(res.data)
     //     }
     //   })
-
+    //------------------------------------------------------------------------
     //获取一个集合的数据
     // db.collection('todos').get({
     //   success: function(res) { // res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
@@ -89,16 +89,15 @@ Page({
      */
     const _ = db.command
     db.collection('todos').where({
-        age: _.gte(20).and(_.lte(24))
-      })
-      .get({
-        success: function(res) {
-          console.log(res.data)
-          wx.showToast({
-            title: '查询成功！',
-          })
-        }
-      })
+      age: _.gte(20).and(_.lte(24))
+    }).get({
+      success: function(res) {
+        console.log(res.data)
+        wx.showToast({
+          title: '查询成功！',
+        })
+      }
+    })
 
   },
   /**更新数据
@@ -120,64 +119,164 @@ Page({
 
    * 修改数据库中的数据
    */
-  alter: function(e) {
+  //局部更新
+  modify: function(e) {
     const db = wx.cloud.database();
-    db.collection('todos').doc('5ba9f5bf301139d85475aa76').update({
-      // data 传入需要局部更新的数据
-      data: {
-        isNonProfit: false
-      },
+    //将id为1的条目中age更新为100
+    // db.collection('todos').doc('1').update({ // data 传入需要局部更新的数据
+    //   data: {
+    //     age: 100
+    //   },
+    //   success: function(res) {
+    //     console.log(res.data)
+    //   }
+    // })
+    //------------------------------------------------------------------------
+    // db.collection('todos').doc('2').update({
+    //   data: {
+    //     age: 22
+    //   },
+    //   success: function(res) {
+    //     console.log(res.data)
+    //   }
+    // })
+    //------------------------------------------------------------------------
+    //将id为W6mu05KURGseSvR7的条目的age 自增10
+    // const _ = db.command
+    // db.collection('todos').doc('W6mu05KURGseSvR7').update({
+    //   data: {
+    //     // 表示指示数据库将字段自增 10
+    //     age: _.inc(10)
+    //   },
+    //   success: function(res) {
+    //     console.log(res.data)
+    //   }
+    // })
+    //------------------------------------------------------------------------
+    //数据结尾添加'mini-program'字段
+    // const _ = db.command
+    // db.collection('todos').doc('W6nNSRCzvz2iPh-R').update({
+    //   data: {
+    //     tags: _.push('mini-program')
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
+    //------------------------------------------------------------------------
+    //数据结尾删除'mini-program'字段
+    // const _ = db.command
+    // db.collection('todos').doc('W6nNSRCzvz2iPh-R').update({
+    //   data: {
+    //     tags: _.pop('mini-program')
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
+    //------------------------------------------------------------------------
+    //数据头部增加'mini-program'字段
+    // const _ = db.command
+    // db.collection('todos').doc('W6nNSRCzvz2iPh-R').update({
+    //   data: {
+    //     tags: _.unshift('mini-program')
+    //   },
+    //   success: function(res) {
+    //     console.log(res.data)
+    //   }
+    // })
+  },
+  /**
+   * 删除数据库操作
+   */
+  deletee: function() {
+    const db = wx.cloud.database();
+    //删除一条数据 通过id
+    db.collection('todos').doc('W6sD-ZKURGseSv1O').remove({
       success: function(res) {
         console.log(res.data)
       }
     })
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 存储操作
    */
-  onReady: function() {
-
+  //上传文件
+  upload: function(e) {
+    wx.cloud.uploadFile({
+      cloudPath: 'example.png', // 上传至云端的路径
+      filePath: 'pages/images/ds.png', // 小程序临时文件路径
+      success: res => {
+        // 返回文件 ID
+        console.log(res.fileID)
+      },
+      fail: console.error
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
+  //下载文件
+  download: function(e) {
+    wx.cloud.downloadFile({
+      fileID: 'cloud://for-cloud-dev-5c610c.666f-for-cloud-dev-5c610c/example.png', // 文件 ID
+      success: res => {
+        // 返回临时文件路径
+        console.log(res.tempFilePath)
+      },
+      fail: console.error
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
+  //删除文件
+  deleteFile: function(e) {
+    wx.cloud.deleteFile({
+      fileList: ['cloud://for-cloud-dev-5c610c.666f-for-cloud-dev-5c610c/example.png'],
+      success: res => {
+        // handle success
+        console.log(res.fileList)
+      },
+      fail: console.error
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
+  //换取临时链接
+  getTemp: function(e) {
+    wx.cloud.getTempFileURL({
+      fileList: ['cloud://for-cloud-dev-5c610c.666f-for-cloud-dev-5c610c/example.png'],
+      success: res => {
+        // fileList 是一个有如下结构的对象数组
+        // [{
+        //    fileID: 'cloud://xxx.png', // 文件 ID
+        //    tempFileURL: '', // 临时文件网络链接
+        //    maxAge: 120 * 60 * 1000, // 有效期
+        // }]
+        console.log(res.fileList)
+      },
+      fail: console.error
+    })
   },
-
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
+   * 云函数
    */
-  onPullDownRefresh: function() {
-
+  cloudAdd: function(e) {
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'add',
+      // 传给云函数的参数
+      data: {
+        a: 1,
+        b: 2,
+      },
+      success: function(res) {
+        console.log(res.result) // 3
+      },
+      fail: console.error
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+  //测试   获取用户信息
+  test: function(e) {
+    wx.cloud.callFunction({
+      name: 'test',
+      complete: res => {
+        console.log('callFunction test result: ', res)
+      }
+    })
   }
 })

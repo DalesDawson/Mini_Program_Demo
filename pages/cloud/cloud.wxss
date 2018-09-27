@@ -1,0 +1,9 @@
+.button-shape {
+  height: 45px;
+  width: 70px
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+}
