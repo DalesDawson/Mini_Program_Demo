@@ -17,8 +17,15 @@
   </view>
   <view>云函数
     <view class='content'>
-    <button id='cloudAdd' bindtap='cloudAdd'>云函数+</button>
-     <button id='test' bindtap='test'>测试用户信息</button>
+      <button id='cloudAdd' bindtap='cloudAdd'>云函数+</button>
+      <button id='test' bindtap='test'>测试用户信息</button>
+    </view>
+    <view>在云函数中
+      <view class='content'>
+        <button id='database' bindtap='database'>调用数据库</button>
+        <button id='storage' bindtap='storage'>调用存储</button>
+        <button id='otherCloudFunction' bindtap='otherCloudFunction'>调用其他云函数</button>
+      </view>
     </view>
   </view>
 </view>

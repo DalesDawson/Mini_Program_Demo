@@ -203,14 +203,62 @@ Page({
    */
   //上传文件
   upload: function(e) {
-    wx.cloud.uploadFile({
-      cloudPath: 'example.png', // 上传至云端的路径
-      filePath: 'pages/images/ds.png', // 小程序临时文件路径
-      success: res => {
-        // 返回文件 ID
-        console.log(res.fileID)
+    // wx.cloud.uploadFile({
+    //   cloudPath: 'example.png', // 上传至云端的路径
+    //   filePath: 'pages/images/ds.png', // 小程序临时文件路径
+    //   success: res => {
+    //     // 返回文件 ID
+    //     console.log(res.fileID)
+    //   },
+    //   fail: console.error
+    // })
+    // 选择图片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+
+        wx.showLoading({
+          title: '上传中',
+        })
+
+        const filePath = res.tempFilePaths[0]
+
+        // 上传图片
+        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+          success: res => {
+            console.log('[上传文件] 成功：', res)
+            wx.showToast({
+              title: '上传成功',
+            })
+            app.globalData.fileID = res.fileID
+            app.globalData.cloudPath = cloudPath
+            app.globalData.imagePath = filePath
+
+            wx.navigateTo({
+              url: '../storageConsole/storageConsole'
+            })
+          },
+          fail: e => {
+            console.error('[上传文件] 失败：', e)
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败',
+            })
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
+
       },
-      fail: console.error
+      fail: e => {
+        console.error(e)
+      }
     })
   },
 
@@ -275,7 +323,35 @@ Page({
     wx.cloud.callFunction({
       name: 'test',
       complete: res => {
-        console.log('callFunction test result: ', res)
+        console.log('callFunction result: ', res)
+      }
+    })
+  },
+
+  //在云函数中调用数据库
+  database: function(e) {
+    wx.cloud.callFunction({
+      name: 'database',
+      complete: res => {
+        console.log('callFunction result: ', res)
+      }
+    })
+  },
+  //在云函数中调用存储
+  storage: function(e) {
+    wx.cloud.callFunction({
+      name: 'storage',
+      complete: res => {
+        console.log('callFunction result: ', res)
+      }
+    })
+  },
+  //在云函数中调用其他云函数
+  otherCloudFunction: function(e) {
+    wx.cloud.callFunction({
+      name: 'other-function',
+      complete: res => {
+        console.log('callFunction result: ', res)
       }
     })
   }

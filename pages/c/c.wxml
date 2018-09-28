@@ -35,8 +35,8 @@
     <text class="title">热门歌单</text>
     <view class="hotlist">
       <view class="item" wx:for="{{songList}}" wx:key="unique">
-       <image class="hotimg" src="{{item.picUrl}}"></image>
-        <text class="hottext">{{item.songListDesc}}</text>
+        <image class="hotimg" src="{{item.picUrl}}"></image>
+        <text class="hottext">{{item.songListDesc}} </text>
       </view>
     </view>
   </view>
