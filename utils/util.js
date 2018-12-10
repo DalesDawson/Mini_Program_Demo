@@ -8,7 +8,11 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+const formatDate = date => {
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [month, day].map(formatNumber).join('/')
+}
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -17,7 +21,9 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime
 }
-
+module.exports = {
+  formatDate: formatDate
+}
 //过滤器
 function formatWan(n) {
   n = n.toString();
@@ -40,8 +46,10 @@ function getRecommend(callback) {
       _: Date.now()
     },
     method: 'GET',
-    header: { 'content-Type': 'application/json' },
-    success: function (res) {
+    header: {
+      'content-Type': 'application/json'
+    },
+    success: function(res) {
       if (res.statusCode == 200) {
         callback(res.data);
       }
@@ -65,8 +73,10 @@ function getHotSearch(callback) {
       _: Date.now()
     },
     method: 'GET',
-    header: { 'content-Type': 'application/json' },
-    success: function (res) {
+    header: {
+      'content-Type': 'application/json'
+    },
+    success: function(res) {
       if (res.statusCode == 200) {
         let data = res.data;
         data.data.hotkey = data.data.hotkey.slice(0, 8)
@@ -104,8 +114,10 @@ function getSearchMusic(keyword, page, callback) {
       _: Date.now()
     },
     method: 'GET',
-    header: { 'content-Type': 'application/json' },
-    success: function (res) {
+    header: {
+      'content-Type': 'application/json'
+    },
+    success: function(res) {
       if (res.statusCode == 200) {
         callback(res.data);
       }
@@ -115,8 +127,8 @@ function getSearchMusic(keyword, page, callback) {
 
 
 /*
-** 排行榜相关api
-*/
+ ** 排行榜相关api
+ */
 
 //获取排行榜频道数据
 function getToplist(callback) {
@@ -134,8 +146,10 @@ function getToplist(callback) {
       _: Date.now()
     },
     method: 'GET',
-    header: { 'content-Type': 'application/json' },
-    success: function (res) {
+    header: {
+      'content-Type': 'application/json'
+    },
+    success: function(res) {
       if (res.statusCode == 200) {
         let data = res.data;
         let toplist = data.data.topList;
@@ -167,8 +181,10 @@ function getToplistInfo(id, callback) {
       _: Date.now()
     },
     method: 'GET',
-    header: { 'Content-Type': 'application/json' },
-    success: function (res) {
+    header: {
+      'Content-Type': 'application/json'
+    },
+    success: function(res) {
       if (res.statusCode == 200) {
         callback(res.data);
       }
@@ -177,6 +193,7 @@ function getToplistInfo(id, callback) {
 }
 module.exports = {
   formatTime: formatTime,
+  formatDate: formatDate,
   getRecommend: getRecommend,
   getHotSearch: getHotSearch,
   getSearchMusic: getSearchMusic,

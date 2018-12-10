@@ -1,12 +1,16 @@
 {
   "pages": [
+    
+   
+    "pages/a/a",
+    "pages/b/b",
+    "pages/c/c",
+    "pages/d/d",
     "pages/login/login",
     "pages/register/register",
     "pages/cloud/cloud",
-    "pages/c/c",
-    "pages/a/a",
-    "pages/b/b",
-    "pages/d/d",
+    "pages/today_history/history",
+   
     "pages/joke/joke",
     "pages/index/index",
     "pages/logs/logs",
@@ -35,8 +39,8 @@
         "selectedIconPath": "pages/images/as.png"
       },
       {
-        "pagePath": "pages/b/b",
-        "text": "新闻",
+        "pagePath": "pages/joke/joke",
+        "text": "笑话",
         "iconPath": "pages/images/bn.png",
         "selectedIconPath": "pages/images/bs.png"
       },
