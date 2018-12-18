@@ -1,16 +1,16 @@
 {
   "pages": [
     
-   
+    
     "pages/a/a",
     "pages/b/b",
     "pages/c/c",
     "pages/d/d",
-    "pages/login/login",
+  
     "pages/register/register",
     "pages/cloud/cloud",
     "pages/today_history/history",
-   
+   "pages/login/login",
     "pages/joke/joke",
     "pages/index/index",
     "pages/logs/logs",

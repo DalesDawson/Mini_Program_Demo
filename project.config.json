@@ -9,7 +9,7 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
+	"libVersion": "2.4.2",
 	"appid": "wx76e726469918c6e6",
 	"projectname": "First_Demo",
 	"cloudfunctionRoot": "functions/",
